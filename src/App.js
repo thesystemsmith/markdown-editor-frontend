@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './App.css'
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import "./App.css";
 
 function App(){
   const [markdown, setMarkdown] = useState('')
   const [htmlPreview, setHtmlPreview] = useState('')
 
+  //event handler
   const handleInputChange = async (e) =>{
     const input = e.target.value
     setMarkdown(input)
@@ -18,6 +21,11 @@ function App(){
     }
   }
 
+  //apply syntax highlighting whenever content changes
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [htmlPreview])
+  
   return (
     <div className="App">
       <h1>Markdown Editor</h1>

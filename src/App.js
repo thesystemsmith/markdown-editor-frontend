@@ -11,7 +11,7 @@ function App(){
     setMarkdown(input)
 
     try {
-      const response = await axios.post('http;//localhost:5001/convert', {markdown: input})
+      const response = await axios.post('http://localhost:5001/convert', {markdown: input})
       setHtmlPreview(response.data.html)
     } catch (error) {
       console.log('error converting markdown to html ', error)
